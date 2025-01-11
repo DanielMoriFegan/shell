@@ -11,12 +11,11 @@ set -x
 
 mkdir analysis output
 touch README.md
-echo "# Project Name: DSI Consulting Inc." > README.md
 touch analysis/main.py
 
 # download client data
 curl -Lo rawdata.zip https://github.com/UofT-DSI/shell/raw/refs/heads/main/02_activities/assignments/rawdata.zip
-unzip rawdata.zip
+unzip rawdata.zip #For the assignment - I used Expand_Archive -Path rawdata.zip -DestinationPath ./rawdata
 
 ###########################################
 # Complete assignment here
@@ -40,8 +39,6 @@ cp raw/event_*.log* processed/event_logs
 # 7. For user privacy, remove all files containing IP addresses (files with "ipaddr" in the filename) from ./data/raw and ./data/processed/user_logs
 rm -iv raw/*ipaddr*
 rm -iv processed/user_logs/*ipaddr*
-#The rf -rf ./data is an invalid code. If this was rm -rf ./data it is still ignored, as step 8 would not be possible. 
-
 # 8. Create a file named ./data/inventory.txt that lists all the files in the subfolders of ./data/processed
 ls processed/user_logs processed/event_logs processed/server_logs >>inventory.txt
 
